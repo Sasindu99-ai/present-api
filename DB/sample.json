@@ -1,0 +1,112 @@
+[
+  {
+    'base': 200,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 77,
+    'rate': 115,
+    'tour_type': 1,
+    'vehicle_type': 1,
+    'waiting_rate': 5,
+    'waiting_time': 30
+  },
+  {
+    'base': 150,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 78,
+    'rate': 115,
+    'tour_type': 1,
+    'vehicle_type': 1,
+    'waiting_rate': 5,
+    'waiting_time': 30
+  },
+  {
+    'base': 250,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 82,
+    'rate': 125,
+    'tour_type': 1,
+    'vehicle_type': 2,
+    'waiting_rate': 6,
+    'waiting_time': 30
+  },
+  {
+    'base': 200,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 83,
+    'rate': 125,
+    'tour_type': 1,
+    'vehicle_type': 2,
+    'waiting_rate': 6,
+    'waiting_time': 30
+  },
+  {
+    'base': 350,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 87,
+    'rate': 155,
+    'tour_type': 1,
+    'vehicle_type': 3,
+    'waiting_rate': 7,
+    'waiting_time': 30
+  },
+  {
+    'base': 300,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 88,
+    'rate': 155,
+    'tour_type': 1,
+    'vehicle_type': 3,
+    'waiting_rate': 7,
+    'waiting_time': 30
+  },
+  {
+    'base': 300,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 92,
+    'rate': 130,
+    'tour_type': 1,
+    'vehicle_type': 4,
+    'waiting_rate': 6,
+    'waiting_time': 30
+  },
+  {
+    'base': 250,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 93,
+    'rate': 130,
+    'tour_type': 1,
+    'vehicle_type': 4,
+    'waiting_rate': 6,
+    'waiting_time': 30
+  },
+  {
+    'base': 450,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 97,
+    'rate': 185,
+    'tour_type': 1,
+    'vehicle_type': 5,
+    'waiting_rate': 8,
+    'waiting_time': 30
+  },
+  {
+    'base': 400,
+    'discount': 0,
+    'fare': 'Evening',
+    'id': 98,
+    'rate': 185,
+    'tour_type': 1,
+    'vehicle_type': 5,
+    'waiting_rate': 8,
+    'waiting_time': 30
+  }
+]
