@@ -2,11 +2,11 @@ from datetime import datetime
 from ftplib import FTP
 
 # FTP server credentials and file information
-FTP_URL = 'https://famcartapi.elit-x.co'
+FTP_URL = 'https://presentapi.elit-x.co'
 FTP_BASE = '/'
 FTP_HOST = '66.29.146.94'
-FTP_USER = 'admin@famcartapi.elit-x.co'
-FTP_PASSWORD = 'uAJewdm4Vy!l'
+FTP_USER = 'admin@presentapi.elit-x.co'
+FTP_PASSWORD = 'PMss@123'
 LOCAL_BASE = "../"
 FILES = ['tmp/restart.txt']
 
