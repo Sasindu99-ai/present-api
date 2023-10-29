@@ -9,7 +9,7 @@ FTP_USER = 'admin@presentapi.elit-x.co'
 FTP_PASSWORD = 'PMss@123'
 LOCAL_BASE = "../"
 FILES = ['main.py', 'Resources.py']
-FOLDERS = ['Controller', 'Model', 'Parsers', 'Public']
+FOLDERS = ['Controller', 'Model', 'Parsers']
 
 if __name__ == "__main__":
     try:

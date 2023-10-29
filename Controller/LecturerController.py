@@ -1,17 +1,17 @@
+# -- GLOBAL VARS -- #
 import base64
 import ftplib
 import io
 import pytz
-from Model.UserModel import UserModel
-from vvecon.rest_api.utils.Controller import Controller, cover
-from vvecon.rest_api.utils.Types import NONE, OBJ_, ANY, CURSOR, CON
+from vvecon.rest_api.utils.Controller import cover, Controller
+from vvecon.rest_api.utils.Types import CURSOR, ANY, OBJ_, NONE, CON
+from Model.LecturerModel import LecturerModel
 
-# -- GLOBAL VARS -- #
 TIME_ZONE = pytz.timezone('America/New_York')
 
 
-# -- User Controller -- #
-class UserController(Controller):
+# -- Lecturer Controller -- #
+class LecturerController(Controller):
     FTP_URL = 'https://elit-x.co'
     FTP_BASE = '/public/uploads/'
     FTP_HOST = '66.29.146.94'
@@ -22,7 +22,7 @@ class UserController(Controller):
         # initialize database connections
         self.db = db
         # initialize user model
-        self.user_model = UserModel()
+        self.lecturer_model = LecturerModel()
 
     def upload_file(self, data, file, path):
         if not hasattr(self, "FTP_HOST") or self.__class__.FTP_HOST is None or not hasattr(self, "FTP_USER") \
@@ -59,21 +59,33 @@ class UserController(Controller):
 
     @cover("failed to login")
     def login(self, email: str, password: str, cursor: CURSOR) -> ANY:
-        return self.user_model.login(cursor, email, password)
+        return self.lecturer_model.login(cursor, email, password)
 
     @cover("failed to signup")
-    def signup(self, user_name: str, email: str, student_id: str, batch: int, password: str, cursor: CURSOR,
-               con: CON) -> ANY:
-        return self.user_model.signup(cursor, con, user_name, email, student_id, batch, password)
+    def signup(self, user_name: str, email: str, password: str, cursor: CURSOR, con: CON) -> ANY:
+        return self.lecturer_model.signup(cursor, con, user_name, email, password)
+
+    @cover("failed to get lecturers")
+    def lecturers(self, cursor: CURSOR) -> ANY:
+        return self.lecturer_model.lecturers(cursor)
+
+    @cover("failed to add a new batch")
+    def batch(self, batch: str, cursor: CURSOR, con: CON) -> ANY:
+        return self.lecturer_model.batch(cursor, con, batch)
 
     @cover("failed to get batches")
     def batches(self, cursor: CURSOR) -> ANY:
-        return self.user_model.batches(cursor)
+        return self.lecturer_model.batches(cursor)
+
+    @cover("failed to add a new lecture")
+    def lecture(self, lecture: str, lecturer: int, batch: int, date: str, start: str, end: str, cursor: CURSOR,
+                con: CON) -> ANY:
+        return self.lecturer_model.lecture(cursor, con, lecture, lecturer, batch, date, start, end)
 
     @cover("failed to get lectures")
-    def lectures(self, student: int, cursor: CURSOR) -> ANY:
-        return self.user_model.lectures(cursor, student)
+    def lectures(self, lecturer: int, cursor: CURSOR) -> ANY:
+        return self.lecturer_model.lectures(cursor, lecturer)
 
-    @cover("failed to attend the lecture")
-    def attend(self, lecture: int, student: int, latitude: str, longitude: str, cursor: CURSOR, con: CON) -> ANY:
-        return self.user_model.attend(cursor, con, lecture, student, latitude, longitude)
+    @cover("failed to get attendance")
+    def attendance(self, lecture: int, cursor: CURSOR) -> ANY:
+        return self.lecturer_model.attendance(cursor, lecture)

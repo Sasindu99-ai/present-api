@@ -1,5 +1,5 @@
 from vvecon.rest_api import App
-from Resources import User, sock
+from Resources import User, Lecturer, sock
 # REARRANGE : import eventlet
 
 # initializing API
@@ -9,6 +9,7 @@ sock.init_app(app)  # REARRANGE : sock.init_app(app, async_mode='eventlet')
 
 # add User class to API resources
 app.add_resource(User, "/")
+app.add_resource(Lecturer, "/lecturer/")
 
 if __name__ == "__main__":
     # run the server

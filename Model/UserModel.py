@@ -36,7 +36,7 @@ class UserModel(Model):
         );
         """, {"batch": batch}, {"user_name": user_name, "email": email, "student_id": student_id, "password": password})
         self.commit(con)
-        return cursor.lastrowid > 0
+        return self.login(cursor, email, password)
 
     @cover("failed to get batches")
     def batches(self, cursor: CURSOR) -> LIST:
@@ -49,11 +49,11 @@ class UserModel(Model):
     @cover("failed to get lectures")
     def lectures(self, cursor: CURSOR, student: int) -> LIST:
         self.execute(cursor, """
-        SELECT l.id, l.lecture, l.id, l.lecture, l.lecturer, l.batch, l.day, FORMAT(l.`from`, 'hh:mm tt') AS `from`, 
-        FORMAT(l.`to`, 'hh:mm tt') AS `to`
+        SELECT l.id, l.lecture, l.lecturer, l.batch, l.day, TIME_FORMAT(l.`from`, '%h:%i') AS `from`, 
+        TIME_FORMAT(l.`to`, '%h:%i') AS `to`
         FROM lectures l
         JOIN students s ON (s.batch=l.batch)
-        WHERE DATE(l.day)=DATE(CONVERT_TZ(NOW(), 'UTC', '+05:30')) AND l.deleted_at IS NULL AND s.id='{student}' 
+        WHERE DATE(l.day)=DATE(NOW() - INTERVAL 150 MINUTE) AND l.deleted_at IS NULL AND s.id='{student}' 
         AND NOT EXISTS(
             SELECT 1
             FROM attendance a
